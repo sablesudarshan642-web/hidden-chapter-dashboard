@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIDDEN CHAPTER — AI Cloud Dashboard</title>
+<style>
+:root{--bg:#090d18;--panel:#121a2b;--panel2:#18233a;--text:#eef3ff;--muted:#9aa8c4;--gold:#e9b85b;--line:#27334b;--green:#43d19e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#1b2947 0,#090d18 42%);color:var(--text);font:15px Arial,sans-serif}
+header{padding:22px 18px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:800;letter-spacing:1.5px}.brand span{color:var(--gold)}.status{font-size:12px;color:var(--green);background:#123329;padding:7px 10px;border-radius:20px}
+main{max-width:1000px;margin:auto;padding:20px 16px 40px}.welcome h1{font-size:25px;margin:8px 0}.welcome p,.muted{color:var(--muted);line-height:1.5}
+.notice{background:#302817;border:1px solid #715a2c;color:#f5d99b;padding:12px;border-radius:12px;font-size:13px;line-height:1.45;margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:15px;padding:16px}
+.label{font-size:12px;color:var(--muted)}.value{font-size:25px;font-weight:800;margin-top:8px}.gold{color:var(--gold)}
+section{margin-top:24px}h2{font-size:18px;margin:0 0 12px}.actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+button{border:1px solid var(--line);border-radius:12px;padding:14px 10px;background:#17243a;color:var(--text);font-weight:700;font-size:14px;cursor:pointer}
+button:active{transform:scale(.98)}button.primary{background:var(--gold);color:#15120b;border:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:16px;margin-top:12px}
+input,textarea,select{width:100%;margin-top:8px;padding:12px;border-radius:10px;border:1px solid var(--line);background:#0b1221;color:var(--text);font:14px Arial}
+textarea{min-height:90px;resize:vertical}.row{display:flex;gap:9px;flex-wrap:wrap}.row button{flex:1}
+.list{padding:0;margin:0;list-style:none}.list li{padding:11px 0;border-bottom:1px solid var(--line);color:var(--muted)}.list li:last-child{border:0}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(4,1fr)}.actions{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="brand">HIDDEN <span>CHAPTER</span></div><div class="status">● PROTOTYPE</div></header>
+<main>
+<div class="welcome"><p class="gold">SUDYAA AI CLOUD</p><h1>Welcome to your creator dashboard</h1><p>Manage your history-video workflow from your Android phone.</p></div>
+<div class="notice"><b>Prototype mode:</b> This dashboard is a visual starter. It is not connected to a cloud server, AI video service, or YouTube yet. No videos are uploaded automatically.</div>
+<div class="grid">
+<div class="card"><div class="label">Connected channel</div><div class="value" style="font-size:18px">HIDDEN CHAPTER</div><div class="label">@nonstophiddenchapter</div></div>
+<div class="card"><div class="label">Cloud status</div><div class="value gold" style="font-size:19px">Not deployed</div><div class="label">Hosting setup pending</div></div>
+<div class="card"><div class="label">Videos created</div><div class="value" id="created">0</div><div class="label">Prototype counter</div></div>
+<div class="card"><div class="label">Pending approval</div><div class="value" id="pending">0</div><div class="label">Review before publishing</div></div>
+</div>
+<section><h2>Quick actions</h2><div class="actions">
+<button onclick="show('ideas')">💡 History ideas</button><button onclick="show('script')">✍️ Script planner</button><button onclick="show('video')">🎬 Video pipeline</button><button onclick="show('upload')">📤 Upload checklist</button>
+</div></section>
+<section id="workspace"><h2>Workspace</h2><div class="panel"><p class="muted">Choose a quick action above to open a planning tool.</p></div></section>
+<section><h2>Workflow status</h2><div class="panel"><ul class="list"><li>① Topic research — not connected</li><li>② Script generation — planning only</li><li>③ Voiceover and video creation — not connected</li><li>④ Human review — required</li><li>⑤ YouTube upload/scheduling — not connected</li></ul></div></section>
+<footer>HIDDEN CHAPTER • Mobile-first dashboard prototype</footer>
+</main>
+<script>
+const box=document.getElementById('workspace');
+function show(which){
+ let content='';
+ if(which==='ideas') content='<h2>History idea planner</h2><p class="muted">Starter topics — verify every historical claim with reliable sources before making a video.</p><ul class="list"><li>The Library of Alexandria: what do we actually know?</li><li>How the ancient city of Pompeii was preserved</li><li>The mystery and history of Easter Island’s moai</li><li>How the Silk Road connected distant civilizations</li></ul>';
+ if(which==='script') content='<h2>Script planner</h2><label>Video topic</label><input id="topic" placeholder="Example: The lost city of Pompeii"><label>Target length</label><select id="length"><option>Short (30–60 seconds)</option><option>Long video (8–12 minutes)</option></select><button class="primary" style="margin-top:12px;width:100%" onclick="makeBrief()">Create planning brief</button><div id="brief" class="muted"></div>';
+ if(which==='video') content='<h2>Video pipeline</h2><p class="muted">Use this checklist to track a video. Actual rendering and AI voiceover require connected services.</p><ul class="list"><li>□ Research and source-check</li><li>□ Write and review script</li><li>□ Record or generate narration</li><li>□ Edit visuals, captions and sound</li><li>□ Check copyright and factual accuracy</li></ul><button class="primary" style="width:100%;margin-top:10px" onclick="addVideo()">Add one planned video</button>';
+ if(which==='upload') content='<h2>YouTube upload checklist</h2><p class="muted">Uploads are not enabled in this prototype. Review these before publishing:</p><ul class="list"><li>□ Correct channel selected: @nonstophiddenchapter</li><li>□ Title, description and thumbnail checked</li><li>□ Music and visuals have appropriate rights</li><li>□ Facts and sources reviewed</li><li>□ Audience setting and visibility checked</li><li>□ Final approval before scheduling</li></ul>';
+ box.innerHTML='<div class="panel">'+content+'</div>';
+}
+function makeBrief(){let t=document.getElementById('topic').value.trim();let l=document.getElementById('length').value;document.getElementById('brief').innerHTML=t?'Planning brief: Create a '+l+' video about <b>'+escapeHtml(t)+'</b>. Gather at least 3 trustworthy sources, separate confirmed facts from theories, then write a clear hook, timeline and conclusion.':'Please enter a topic first.';}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function addVideo(){let n=Number(document.getElementById('created').textContent)+1;document.getElementById('created').textContent=n;document.getElementById('pending').textContent=n;alert('Added to the prototype planner. No video file was generated.');}
+</script>
+</body></html>
