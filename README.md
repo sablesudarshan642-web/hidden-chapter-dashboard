@@ -1,2 +1,2 @@
-# hidden-chapter-dashboard
+index.html
 Hidden chapter 
